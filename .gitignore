@@ -4,7 +4,13 @@
 */target/*
 */target/**
 
-.classpath
-.project
-.settings/
-target/
+.class
+.jar
+.lst
+*/target/
+
+**/.classpath
+**/.project
+**/target-ide/*
+**/.settings
+*~
