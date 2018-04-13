@@ -37,11 +37,12 @@ public class ArrayList implements List {
 
     public Object remove(int index) {
         indexValidation(index);
+        Object removed = array[index];
         for (int i = index; i < size - 1; i++) {
             array[i] = array[i + 1];
         }
         size--;
-        return array[index];
+        return removed;
     }
 
     public Object get(int index) {
@@ -51,8 +52,9 @@ public class ArrayList implements List {
 
     public Object set(Object value, int index) {
         indexValidation(index);
+        Object changed = array[index];
         array[index] = value;
-        return value;
+        return changed;
     }
 
     public void clear() {
@@ -130,10 +132,12 @@ public class ArrayList implements List {
         System.out.println("arrayList.add('A', 'B', 'C') : " + arrayList);
         System.out.println("arrayList.get(1) = " + arrayList.get(1));
         /*set*/
-        arrayList.set("F", 1);
+//        arrayList.set("F", 1);
+        System.out.println("arrayList.set('F',1) : " + arrayList.set("F", 1));
         System.out.println("arrayList.set('F',1) : " + arrayList);
         /*remove*/
-        arrayList.remove(1);
+//        arrayList.remove(1);
+        System.out.println("arrayList.remove(1) : " + arrayList.remove(1));
         System.out.println("arrayList.remove(1) : " + arrayList);
         System.out.println("arrayList.contains('C') : " + arrayList.contains("C"));
         /*addByIndex*/
