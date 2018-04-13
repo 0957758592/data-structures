@@ -1,4 +1,10 @@
 *.idea
 /External Librares
 *.iml
-*/target/
+*/target/*
+*/target/**
+
+.classpath
+.project
+.settings/
+target/
