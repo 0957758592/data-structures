@@ -114,32 +114,32 @@ public class ArrayList implements List {
     public static void main(String[] args) {
         ArrayList arrayList = new ArrayList();
         System.out.println("arrayList: " + arrayList);
-        System.out.println("arrayList size: " + arrayList.size());
-        System.out.println("arrayList length: " + arrayList.array.length);
+        System.out.println("arrayList.size(): " + arrayList.size());
+        System.out.println("arrayList.array.length: " + arrayList.array.length);
         /*add*/
-        arrayList.add("B");
+        arrayList.add("A");
         arrayList.add("B");
         arrayList.add("C");
-        System.out.println(arrayList);
-        System.out.println("getValue index 1 = " + arrayList.get(1));
+        System.out.println("arrayList.add('A', 'B', 'C') : " + arrayList);
+        System.out.println("arrayList.get(1) = " + arrayList.get(1));
         /*set*/
         arrayList.set("F", 1);
-        System.out.println("after set:" + arrayList);
+        System.out.println("arrayList.set('F',1) : " + arrayList);
         /*remove*/
         arrayList.remove(1);
-        System.out.println(arrayList);
-        System.out.println("contains: " + arrayList.contains("C"));
+        System.out.println("arrayList.remove(1) : " + arrayList);
+        System.out.println("arrayList.contains('C') : " + arrayList.contains("C"));
         /*addByIndex*/
         arrayList.add("B",1);
-        System.out.println(arrayList);
-        System.out.println("indexOf A : " + arrayList.indexOf("A"));
+        System.out.println("arrayList.add('B',1) : " + arrayList);
+        System.out.println("arrayList.indexOf(A) : " + arrayList.indexOf("A"));
         arrayList.add("A");
-        System.out.println(arrayList);
-        System.out.println("toString: " + arrayList.toString());
-        System.out.println("lastIndexOf A: " + arrayList.lastIndexOf("A"));
-        System.out.println("indexOf A : " + arrayList.indexOf("A"));
+        System.out.println("arrayList.add('A') : " + arrayList);
+        System.out.println("arrayList.toString() : " + arrayList.toString());
+        System.out.println("arrayList.lastIndexOf('A'): " + arrayList.lastIndexOf("A"));
+        System.out.println("arrayList.indexOf('A') : " + arrayList.indexOf("A"));
         arrayList.clear();
-        System.out.println(arrayList);
-        System.out.println("is empty: " + arrayList.isEmpty());
+        System.out.println("arrayList.clear() : " + arrayList);
+        System.out.println("arrayList.isEmpty() : " + arrayList.isEmpty());
     }
 }
