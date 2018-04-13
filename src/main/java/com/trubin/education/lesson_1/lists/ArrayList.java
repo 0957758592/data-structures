@@ -6,15 +6,15 @@ public class ArrayList implements List {
     private int size;
 
     public ArrayList() {
-        array = new Object[size+2];
+        array = new Object[size + 2];
     }
 
     public void add(Object value) {
 
-        if (size == array.length){
-            Object[] newArray = new Object[(int)(array.length * 1.5)];
+        if (size == array.length) {
+            Object[] newArray = new Object[(int) (array.length * 1.5)];
 
-            for (int i = 0; i < size ; i++) {
+            for (int i = 0; i < size; i++) {
                 newArray[i] = array[i];
             }
             array = newArray;
@@ -25,13 +25,20 @@ public class ArrayList implements List {
 
     public void add(Object value, int index) {
         indexValidation(index);
+
+        Object[] newArray = new Object[size + 1];
+        System.arraycopy(array, 0, newArray, 0, index);
+        System.arraycopy(array, index, newArray, index + 1, size - index);
+
+        array = newArray;
         array[index] = value;
+        size++;
     }
 
     public Object remove(int index) {
         indexValidation(index);
-        for (int i = index; i < size-1 ; i++) {
-            array[i] = array[i+1];
+        for (int i = index; i < size - 1; i++) {
+            array[i] = array[i + 1];
         }
         size--;
         return array[index];
@@ -57,7 +64,7 @@ public class ArrayList implements List {
     }
 
     public boolean isEmpty() {
-        if(size == 0){
+        if (size == 0) {
             return true;
         }
         return false;
@@ -65,16 +72,16 @@ public class ArrayList implements List {
 
     public boolean contains(Object value) {
         for (int i = 0; i < size; i++) {
-            if (array[i]==value){
+            if (array[i] == value) {
                 return true;
             }
         }
         return false;
     }
 
-    public int indexOf(Object value){
-        for (int i = 0; i <size ; i++) {
-            if(array[i]==value){
+    public int indexOf(Object value) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
                 return i;
             }
         }
@@ -82,8 +89,8 @@ public class ArrayList implements List {
     }
 
     public int lastIndexOf(Object value) {
-        for (int i = size-1; i > 0 ; i--) {//arrays begins from 0, size from 1
-            if(array[i]==value){
+        for (int i = size - 1; i > 0; i--) {//arrays begins from 0, size from 1
+            if (array[i] == value) {
                 return i;
             }
         }
@@ -91,17 +98,17 @@ public class ArrayList implements List {
     }
 
     private void indexValidation(int index) {
-        if(index < 0 || (index > size)){
+        if (index < 0 || (index > size)) {
             System.out.println();
             throw new IndexOutOfBoundsException("No have such index as " + index);
         }
     }
 
-    public String toString(){
+    public String toString() {
         String result = "[";
 
         for (int i = 0; i < size; i++) {
-            if(i==size-1){
+            if (i == size - 1) {
                 result += array[i];
             } else {
                 result += array[i] + ", ";
@@ -130,7 +137,7 @@ public class ArrayList implements List {
         System.out.println("arrayList.remove(1) : " + arrayList);
         System.out.println("arrayList.contains('C') : " + arrayList.contains("C"));
         /*addByIndex*/
-        arrayList.add("B",1);
+        arrayList.add("B", 1);
         System.out.println("arrayList.add('B',1) : " + arrayList);
         System.out.println("arrayList.indexOf(A) : " + arrayList.indexOf("A"));
         arrayList.add("A");
@@ -141,5 +148,6 @@ public class ArrayList implements List {
         arrayList.clear();
         System.out.println("arrayList.clear() : " + arrayList);
         System.out.println("arrayList.isEmpty() : " + arrayList.isEmpty());
+
     }
 }
