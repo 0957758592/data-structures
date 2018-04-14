@@ -1,16 +1,9 @@
 *.idea
 /External Librares
 *.iml
-*/target/*
-*/target/**
+/target
+target
 
 .class
 .jar
 .lst
-*/target/
-
-**/.classpath
-**/.project
-**/target-ide/*
-**/.settings
-*~
