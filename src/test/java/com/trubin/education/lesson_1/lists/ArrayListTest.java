@@ -5,9 +5,7 @@ import org.junit.Test;
 public class ArrayListTest implements List {
 
 
-    // даже не знаю как правильно написать
-
-    @Test
+    @Test //add to the end
     public void add(ArrayList value) {
         ArrayList arrayList = new ArrayList();
         arrayList.add(value,2);

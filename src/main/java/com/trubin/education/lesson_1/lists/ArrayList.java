@@ -37,10 +37,14 @@ public class ArrayList implements List {
 
     public Object remove(int index) {
         indexValidation(index);
+
         Object removed = array[index];
-        for (int i = index; i < size - 1; i++) {
-            array[i] = array[i + 1];
-        }
+        Object[] newArray = new Object[size - 1];
+
+        System.arraycopy(array, 0, newArray, 0, index);
+        System.arraycopy(array, index + 1, newArray, index, size - (index + 1));
+
+        array = newArray;
         size--;
         return removed;
     }
