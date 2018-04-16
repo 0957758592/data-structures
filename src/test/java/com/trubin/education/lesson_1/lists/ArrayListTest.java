@@ -48,7 +48,7 @@ public class ArrayListTest {
 
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void remove() {
 
         arrayList.add("A", 0);
@@ -60,12 +60,13 @@ public class ArrayListTest {
         assertEquals("A", arrayList.get(0));
         assertTrue("B", arrayList.contains("B"));
         assertEquals("C", arrayList.remove(2)); // <- remove is there
+        assertEquals("D", arrayList.remove(3)); // <- remove is there, indexOutOfBounds
         assertFalse("C", arrayList.contains("C"));
         assertEquals(2, arrayList.indexOf("D"));
         assertEquals(3, arrayList.size());
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void get() {
         assertEquals(5, arrayFiveList.size());
         assertEquals("E", arrayFiveList.get(4));
@@ -76,13 +77,16 @@ public class ArrayListTest {
         assertTrue("A", arrayFiveList.contains(arrayFiveList.get(0)));
         assertEquals(0, arrayFiveList.indexOf("A"));
         assertTrue(arrayFiveList.size() == 4);
+        assertEquals("A",arrayFiveList.get(5));// <- indexOutOfBounds
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void set() {
         arrayFiveList.set("A", 4);
         assertEquals("A", arrayFiveList.get(4));
         assertEquals(4, arrayFiveList.lastIndexOf("A"));
+        arrayFiveList.set("A", 5);// <- indexOutOfBounds
+        arrayList.set("A",1);// <- indexOutOfBounds
     }
 
     @Test
