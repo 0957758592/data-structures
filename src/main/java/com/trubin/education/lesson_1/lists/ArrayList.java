@@ -2,11 +2,16 @@ package com.trubin.education.lesson_1.lists;
 
 public class ArrayList implements List {
 
+    private static final int INITIAL_CAPACITY = 5;
     private Object[] array;
     private int size;
 
-    public ArrayList() {
+    public ArrayList(int size) {
         array = new Object[size + 2];
+    }
+
+    public ArrayList() {
+        this(INITIAL_CAPACITY);
     }
 
     public void add(Object value) {
@@ -78,7 +83,7 @@ public class ArrayList implements List {
 
     public boolean contains(Object value) {
         for (int i = 0; i < size; i++) {
-            if (array[i] == value) {
+            if (array[i].equals(value)) {
                 return true;
             }
         }
@@ -87,7 +92,7 @@ public class ArrayList implements List {
 
     public int indexOf(Object value) {
         for (int i = 0; i < size; i++) {
-            if (array[i] == value) {
+            if (array[i].equals(value)) {
                 return i;
             }
         }
@@ -95,8 +100,8 @@ public class ArrayList implements List {
     }
 
     public int lastIndexOf(Object value) {
-        for (int i = size - 1; i > 0; i--) {//arrays begins from 0, size from 1
-            if (array[i] == value) {
+        for (int i = size - 1; i >= 0; i--) {//arrays begins from 0, size from 1
+            if (array[i].equals(value)) {
                 return i;
             }
         }
@@ -136,11 +141,11 @@ public class ArrayList implements List {
         System.out.println("arrayList.add('A', 'B', 'C') : " + arrayList);
         System.out.println("arrayList.get(1) = " + arrayList.get(1));
         /*set*/
-//        arrayList.set("F", 1);
+        //arrayList.set("F", 1);
         System.out.println("arrayList.set('F',1) : " + arrayList.set("F", 1));
         System.out.println("arrayList.set('F',1) : " + arrayList);
         /*remove*/
-//        arrayList.remove(1);
+        //  arrayList.remove(1);
         System.out.println("arrayList.remove(1) : " + arrayList.remove(1));
         System.out.println("arrayList.remove(1) : " + arrayList);
         System.out.println("arrayList.contains('C') : " + arrayList.contains("C"));
@@ -156,6 +161,5 @@ public class ArrayList implements List {
         arrayList.clear();
         System.out.println("arrayList.clear() : " + arrayList);
         System.out.println("arrayList.isEmpty() : " + arrayList.isEmpty());
-
     }
 }
