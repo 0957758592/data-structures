@@ -1,4 +1,4 @@
-package com.trubin.education.lesson_1.lists;
+package com.trubin.education;
 
 // List, Set, Map
 public interface List {

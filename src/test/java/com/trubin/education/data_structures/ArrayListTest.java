@@ -1,4 +1,4 @@
-package com.trubin.education.lesson_1.lists;
+package com.trubin.education.data_structures;
 
 import org.junit.Before;
 import org.junit.Test;

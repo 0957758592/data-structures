@@ -1,4 +1,6 @@
-package com.trubin.education.lesson_1.lists;
+package com.trubin.education.data_structures;
+
+import com.trubin.education.List;
 
 public class ArrayList implements List {
 
