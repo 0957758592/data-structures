@@ -4,35 +4,36 @@ import com.trubin.education.data_structures.Node;
 
 public class LinkedStack {
 
-    Node head;
+    Node tail;
     int size;
+
 
     public void push(Object value) {
 
         Node newNode = new Node(value);
         if (size == 0) {
-            head = newNode;
+            tail = newNode;
         } else {
-            newNode.next = head;
-            head = newNode;
+            newNode.next = tail;
+            tail = newNode;
         }
         size++;
     }
 
     public Object peek() {
 
-        if (size == 0 || head == null) {
+        if (size == 0 || tail == null) {
             throw new NullPointerException("the stack is empty");
         }
-        return head.value;
+        return tail.value;
     }
 
     public Object pop() {
-        if (size == 0 || head == null) {
+        if (size == 0 || tail == null) {
             throw new NullPointerException("the stack is empty");
         } else {
-            Object object = head.value;
-            head = head.next;
+            Object object = tail.value;
+            tail = tail.next;
             size--;
             return object;
         }

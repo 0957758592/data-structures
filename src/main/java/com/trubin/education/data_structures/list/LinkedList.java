@@ -1,8 +1,12 @@
 package com.trubin.education.data_structures.list;
 
 import com.trubin.education.List;
+import com.trubin.education.data_structures.Node;
 
 public class LinkedList implements List {
+
+    Node head;
+    int size;
 
 
     public void add(Object value) {

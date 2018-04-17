@@ -13,7 +13,4 @@ public class Node {
         return value;
     }
 
-    public Node() {
-
-    }
 }
