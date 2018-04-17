@@ -1,4 +1,4 @@
-package com.trubin.education.data_structures;
+package com.trubin.education.data_structures.list;
 
 import com.trubin.education.List;
 

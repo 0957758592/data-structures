@@ -1,4 +1,4 @@
-package com.trubin.education.data_structures;
+package com.trubin.education.data_structures.stack;
 
 import java.util.EmptyStackException;
 

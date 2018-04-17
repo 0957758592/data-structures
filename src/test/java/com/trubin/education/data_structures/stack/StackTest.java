@@ -1,5 +1,6 @@
-package com.trubin.education.data_structures;
+package com.trubin.education.data_structures.stack;
 
+import com.trubin.education.data_structures.stack.Stack;
 import org.junit.Before;
 import org.junit.Test;
 

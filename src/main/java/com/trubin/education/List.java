@@ -1,6 +1,6 @@
 package com.trubin.education;
 
-// List, Set, Map
+// list, Set, Map
 public interface List {
     // add value to the end of the list
     void add(Object value);
