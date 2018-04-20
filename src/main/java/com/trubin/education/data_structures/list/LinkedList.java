@@ -212,14 +212,18 @@ public class LinkedList implements List {
     public boolean contains(Object value) {
         Node currTail = tail;
         Node currHead = head;
-        for (int i = 0; i < indexDirection(); i++) {
-            for (int j = size - 1; j > indexDirection(); j--) {
-                if (value.equals(currHead.value) || value.equals(currTail.value)) {
-                    return true;
-                }
-                currTail = currTail.prev;
+        int i = 0;
+        int j = size - 1;
+
+        while (i <= j) {
+
+            if (value.equals(currHead.value) || value.equals(currTail.value)) {
+                return true;
             }
+            currTail = currTail.prev;
             currHead = currHead.next;
+            i++;
+            j--;
         }
         return false;
     }
@@ -239,7 +243,7 @@ public class LinkedList implements List {
     public int lastIndexOf(Object value) {
         Node currTail = tail;
 
-        for (int i = size - 1; i >=0; i--) {
+        for (int i = size - 1; i >= 0; i--) {
             if (value.equals(currTail.value)) {
                 return i;
             }
@@ -250,7 +254,7 @@ public class LinkedList implements List {
 
 
     private void indexValidation(int index) {
-        if (index < 0 || index > size-1) {
+        if (index < 0 || index > size - 1) {
             throw new IndexOutOfBoundsException("There are no any indexes here as " + index);
         }
     }
@@ -267,13 +271,13 @@ public class LinkedList implements List {
 
         for (int i = 0; i <= size - 1; i++) {
             if (i == size - 1) {
-                result += curr.value ;
+                result += curr.value;
             } else {
                 result += curr.value + ", ";
                 curr = curr.next;
             }
         }
-    result += "]";
+        result += "]";
 
         return result;
     }
