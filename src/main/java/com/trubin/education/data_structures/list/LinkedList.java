@@ -254,7 +254,7 @@ public class LinkedList implements List {
 
 
     private int indexDirection() {
-        int direction = Math.round(size / 2);
+        int direction = size / 2;
         return direction;
     }
 
