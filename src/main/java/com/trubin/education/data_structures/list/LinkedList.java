@@ -15,7 +15,6 @@ public class LinkedList implements List {
             head = newNode;
             tail = newNode;
         } else {
-            Node currTail = tail;
 
             if (size == 1) {
                 head.next = newNode;
@@ -40,7 +39,6 @@ public class LinkedList implements List {
 
             if (index == 0) {
                 newNode.next = currHead;
-                newNode.prev = null;
                 currHead.prev = newNode;
                 head = newNode;
 
@@ -59,7 +57,6 @@ public class LinkedList implements List {
 
             if (index == size - 1) {
                 currTail.next = newNode;
-                newNode.next = null;
                 newNode.prev = currTail;
                 tail = newNode;
 
@@ -86,7 +83,6 @@ public class LinkedList implements List {
             if (index == 0) {
                 removed = head.value;
                 head = head.next;
-                head.prev = null;
 
             } else {
                 Node currHead = head;
@@ -97,7 +93,6 @@ public class LinkedList implements List {
                 removed = currHead.value;
                 currHead.prev.next = currHead.next;
                 currHead.next.prev = currHead.prev;
-                currHead = null;
             }
 
         } else {
@@ -105,7 +100,6 @@ public class LinkedList implements List {
             if (index == size - 1) {
                 removed = tail.value;
                 tail = tail.prev;
-                tail.next = null;
 
             } else {
                 Node currTail = tail;
@@ -116,7 +110,6 @@ public class LinkedList implements List {
                 removed = currTail.value;
                 currTail.prev.next = currTail.next;
                 currTail.next.prev = currTail.prev;
-                currTail = null;
             }
         }
         size--;
