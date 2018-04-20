@@ -7,14 +7,12 @@ public class LinkedStack {
     Node tail;
     int size;
 
-
     public void push(Object value) {
-
         Node newNode = new Node(value);
         if (size == 0) {
             tail = newNode;
         } else {
-            newNode.next = tail;
+            newNode.prev = tail;
             tail = newNode;
         }
         size++;
@@ -33,7 +31,7 @@ public class LinkedStack {
             throw new NullPointerException("the stack is empty");
         } else {
             Object object = tail.value;
-            tail = tail.next;
+            tail = tail.prev;
             size--;
             return object;
         }

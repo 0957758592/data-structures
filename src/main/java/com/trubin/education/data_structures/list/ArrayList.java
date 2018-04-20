@@ -112,7 +112,6 @@ public class ArrayList implements List {
 
     private void indexValidation(int index) {
         if (index < 0 || (index > size)) {
-            System.out.println();
             throw new IndexOutOfBoundsException("No have such index as " + index);
         }
     }
