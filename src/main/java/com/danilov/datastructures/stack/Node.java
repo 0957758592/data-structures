@@ -1,8 +1,7 @@
-package com.trubin.education.data_structures;
+package com.danilov.datastructures.stack;
 
 public class Node {
 
-    public Node next;
     public Node prev;
     public Object value;
 

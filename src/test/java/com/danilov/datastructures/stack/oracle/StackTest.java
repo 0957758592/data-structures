@@ -1,6 +1,6 @@
-package com.trubin.education.data_structures.stack;
+package com.danilov.datastructures.stack.oracle;
 
-import com.trubin.education.data_structures.stack.Stack;
+import com.danilov.datastructures.stack.oracle.ArrayOracleStack;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,13 +10,13 @@ import static org.junit.Assert.*;
 
 public class StackTest {
 
-    Stack stack;
-    Stack stackFiveEl;
+    ArrayOracleStack stack;
+    ArrayOracleStack stackFiveEl;
 
     @Before
     public void before() {
-        stackFiveEl = new Stack(3);
-        stack = new Stack();
+        stackFiveEl = new ArrayOracleStack(3);
+        stack = new ArrayOracleStack();
 
         char c = 'A';
         for (int i = 0; i < 5; i++) {

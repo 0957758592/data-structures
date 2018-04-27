@@ -1,8 +1,8 @@
-package com.trubin.education.data_structures.queue;
+package com.danilov.datastructures.queue;
 
-import com.trubin.education.data_structures.Node;
+import java.util.NoSuchElementException;
 
-public class LinkedQueue {
+public class LinkedQueue implements Queue {
 
     Node head;
     int size;
@@ -22,6 +22,9 @@ public class LinkedQueue {
     }
 
     public Object dequeue(){
+        if (head == null || size == 0){
+            throw new NoSuchElementException("dequeue() in LinkedQueue");
+        }
         Object result = head.value;
         head = head.next;
         size--;

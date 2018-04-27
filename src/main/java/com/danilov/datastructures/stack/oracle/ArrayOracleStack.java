@@ -1,18 +1,18 @@
-package com.trubin.education.data_structures.stack;
+package com.danilov.datastructures.stack.oracle;
 
 import java.util.EmptyStackException;
 
-public class Stack {
+public class ArrayOracleStack {
 
     private static final int CAPACITY = 5;
     private Object[] array;
     private int size;
 
-    public Stack(int size) {
+    public ArrayOracleStack(int size) {
         array = new Object[size + 2];
     }
 
-    public Stack() {
+    public ArrayOracleStack() {
         this(CAPACITY);
     }
 

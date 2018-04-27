@@ -1,4 +1,4 @@
-package com.trubin.education;
+package com.danilov.datastructures.list;
 
 // list, Set, Map
 public interface List {

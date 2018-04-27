@@ -1,8 +1,8 @@
-package com.trubin.education.data_structures.stack;
+package com.danilov.datastructures.stack;
 
-import com.trubin.education.data_structures.Node;
+import java.util.NoSuchElementException;
 
-public class LinkedStack {
+public class LinkedStack implements Stack {
 
     Node tail;
     int size;
@@ -21,14 +21,14 @@ public class LinkedStack {
     public Object peek() {
 
         if (size == 0 || tail == null) {
-            throw new NullPointerException("the stack is empty");
+            throw new NoSuchElementException("peek(): the LinkedStack is empty");
         }
         return tail.value;
     }
 
     public Object pop() {
         if (size == 0 || tail == null) {
-            throw new NullPointerException("the stack is empty");
+            throw new NoSuchElementException("poop(): the LinkedStack is empty");
         } else {
             Object object = tail.value;
             tail = tail.prev;
@@ -37,4 +37,7 @@ public class LinkedStack {
         }
     }
 
+    public int size() {
+        return size;
+    }
 }
