@@ -3,17 +3,15 @@ package com.danilov.datastructures.list;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
-
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractListTest {
 
+    public abstract List getList();
     List emptyList = getList();
     List listWithFiveElements = getList();
 
-    public abstract List getList();
 
     @Before
     public void before() {

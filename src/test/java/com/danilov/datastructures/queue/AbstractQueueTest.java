@@ -1,6 +1,5 @@
 package com.danilov.datastructures.queue;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;

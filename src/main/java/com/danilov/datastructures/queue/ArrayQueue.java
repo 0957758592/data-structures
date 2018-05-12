@@ -1,9 +1,9 @@
 package com.danilov.datastructures.queue;
+import com.danilov.datastructures.list.AbstractList;
 
 import java.util.NoSuchElementException;
 
-public class ArrayQueue implements Queue {
-    private int size;
+public class ArrayQueue extends AbstractQueue {
     private static final int CAPACITY = 5;
     Object[] array;
 
@@ -17,6 +17,7 @@ public class ArrayQueue implements Queue {
 
 
     public void enqueue(Object value) {
+            validateValue(value);
         if(size == array.length){
             Object[] newArray = new Object[(int) (size*1.5)];
             System.arraycopy(array, 0 , newArray, 0, size);
@@ -27,6 +28,7 @@ public class ArrayQueue implements Queue {
     }
 
     public Object dequeue() {
+        validateValue(array[0]);
         Object removed = array[0];
         if (size > 0){
             System.arraycopy(array, 1, array, 0, size-1);
@@ -34,12 +36,9 @@ public class ArrayQueue implements Queue {
         } else if (size == 0 && array[0] != null){
             array[0] = null;
         } else {
-            throw new NoSuchElementException("deque() in ArrayQueue");
+            throw new NoSuchElementException("deque() : in ArrayQueue");
         }
         return removed;
     }
 
-    public int getSize() {
-        return size;
-    }
 }

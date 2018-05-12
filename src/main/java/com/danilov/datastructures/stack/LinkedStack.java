@@ -2,12 +2,12 @@ package com.danilov.datastructures.stack;
 
 import java.util.NoSuchElementException;
 
-public class LinkedStack implements Stack {
+public class LinkedStack extends AbstractStack {
 
     Node tail;
-    int size;
 
     public void push(Object value) {
+        validateValue(value);
         Node newNode = new Node(value);
         if (size == 0) {
             tail = newNode;
@@ -21,15 +21,17 @@ public class LinkedStack implements Stack {
     public Object peek() {
 
         if (size == 0 || tail == null) {
-            throw new NoSuchElementException("peek(): the LinkedStack is empty");
+            throw new NoSuchElementException("peek(): in LinkedStack");
         }
+        validateValue(tail.value);
         return tail.value;
     }
 
     public Object pop() {
         if (size == 0 || tail == null) {
-            throw new NoSuchElementException("poop(): the LinkedStack is empty");
+            throw new NoSuchElementException("poop(): in LinkedStack");
         } else {
+            validateValue(tail.value);
             Object object = tail.value;
             tail = tail.prev;
             size--;
@@ -37,7 +39,18 @@ public class LinkedStack implements Stack {
         }
     }
 
-    public int size() {
-        return size;
+    private class Node {
+
+        Node prev;
+        Object value;
+
+        Node(Object value) {
+            this.value = value;
+        }
+
+        Object getValue() {
+            return value;
+        }
     }
+
 }

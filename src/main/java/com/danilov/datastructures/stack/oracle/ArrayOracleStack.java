@@ -71,17 +71,17 @@ public class ArrayOracleStack {
     }
 
     public String toString() {
-        String result = "[";
-
+        StringBuilder result = new StringBuilder();
+        result.append("[");
         for (int i = 0; i < size; i++) {
             if (i == size - 1) {
-                result += array[i];
+                result.append(array[i]);
             } else {
-                result += array[i] + ", ";
+                result.append(array[i] + ", ");
             }
         }
-        result += "]";
-        return result;
+        result.append("]");
+        return result.toString();
     }
 
 }

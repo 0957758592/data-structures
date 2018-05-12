@@ -1,6 +1,6 @@
 package com.danilov.datastructures.list;
 
-public class ArrayList extends AbstractList{
+public class ArrayList extends AbstractList {
 
     private static final int INITIAL_CAPACITY = 5;
     private Object[] array;
@@ -16,7 +16,7 @@ public class ArrayList extends AbstractList{
     public void add(Object value, int index) {
         validateAddIndex(index);
         checkSize();
-        System.arraycopy(array, index, array, index+1,(size++)-index);
+        System.arraycopy(array, index, array, index + 1, (size++) - index);
         array[index] = value;
     }
 
@@ -24,12 +24,13 @@ public class ArrayList extends AbstractList{
         validateIndex(index);
         checkSize();
         Object removed = array[index];
-        System.arraycopy(array, index+1, array, index, (size--)-index);
+        System.arraycopy(array, index + 1, array, index, (size--) - index);
         return removed;
     }
 
-    public Object get(int index) {
+    public Object get(int index){
         validateIndex(index);
+        validateValue(array[index]);
         return array[index];
     }
 
@@ -41,13 +42,14 @@ public class ArrayList extends AbstractList{
     }
 
     public void clear() {
-        for (int i = 0; i < size ; i++) {
+        for (int i = 0; i < size; i++) {
             array[i] = null;
         }
         size = 0;
     }
 
     public int indexOf(Object value) {
+        validateValue(value);
         for (int i = 0; i < size; i++) {
             if (value.equals(array[i])) {
                 return i;
@@ -57,6 +59,7 @@ public class ArrayList extends AbstractList{
     }
 
     public int lastIndexOf(Object value) {
+        validateValue(value);
         for (int i = size - 1; i >= 0; i--) {
             if (value.equals(array[i])) {
                 return i;
@@ -73,17 +76,19 @@ public class ArrayList extends AbstractList{
         }
     }
 
+
     public String toString() {
-        String result = "[";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
 
         for (int i = 0; i < size; i++) {
             if (i == size - 1) {
-                result += array[i];
+                sb.append(array[i]);
             } else {
-                result += array[i] + ", ";
+                sb.append(array[i] + ", ");
             }
         }
-        result += "]";
-        return result;
+        sb.append("]");
+        return sb.toString();
     }
 }

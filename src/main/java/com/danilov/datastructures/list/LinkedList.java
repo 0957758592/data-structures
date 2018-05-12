@@ -56,13 +56,17 @@ public class LinkedList extends AbstractList {
 
     public Object get(int index) {
         validateIndex(index);
+
         Node currNode;
 
         if (index == 0) {
+            validateValue(head.value);
             return head.value;
         } else if (index == size - 1) {
+            validateValue(tail.value);
             return tail.value;
         } else {
+            validateValue(getNode(index));
             currNode = getNode(index);
             return currNode.value;
         }
@@ -70,6 +74,7 @@ public class LinkedList extends AbstractList {
 
     public Object set(Object value, int index) {
         validateIndex(index);
+        validateValue(value);
         Object oldValue;
 
         if (index == 0) {
@@ -95,22 +100,8 @@ public class LinkedList extends AbstractList {
         size = 0;
     }
 
-    public int size() {
-        return size;
-    }
-
-    public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean contains(Object value) {
-        return indexOf(value) != -1;
-    }
-
     public int indexOf(Object value) {
+        validateValue(value);
         Node currHead = head;
 
         for (int i = 0; i <= size - 1; i++) {
@@ -123,6 +114,7 @@ public class LinkedList extends AbstractList {
     }
 
     public int lastIndexOf(Object value) {
+        validateValue(value);
         Node currTail = tail;
 
         for (int i = size - 1; i >= 0; i--) {
@@ -155,19 +147,31 @@ public class LinkedList extends AbstractList {
 
     public String toString() {
         Node curr = head;
-        String result = "[";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
 
         for (int i = 0; i <= size - 1; i++) {
             if (i == size - 1) {
-                result += curr.value;
+                sb.append(curr.value);
             } else {
-                result += curr.value + ", ";
+                sb.append(curr.value + ", ");
                 curr = curr.next;
             }
         }
-        result += "]";
+        sb.append("]");
 
-        return result;
+        return sb.toString();
+    }
+
+    private class Node {
+
+         Node next;
+         Node prev;
+         Object value;
+
+         Node(Object value) {
+            this.value = value;
+        }
     }
 
 }
