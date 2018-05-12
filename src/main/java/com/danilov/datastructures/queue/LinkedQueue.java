@@ -25,7 +25,6 @@ public class LinkedQueue extends AbstractQueue {
         if (head == null || size == 0){
             throw new NoSuchElementException("dequeue() : in LinkedQueue");
         }
-        validateValue(head.value);
         Object result = head.value;
         head = head.next;
         size--;
@@ -33,7 +32,6 @@ public class LinkedQueue extends AbstractQueue {
     }
 
     private static class Node {
-
         private Node next;
         private Object value;
         private Node(Object value) {

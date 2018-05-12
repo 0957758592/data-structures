@@ -38,6 +38,11 @@ public abstract class AbstractListTest {
         assertEquals("D", emptyList.get(3));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddNull() {
+        emptyList.add(null);
+    }
+
     @Test
     public void testAddByIndex() {
         emptyList.add("A");

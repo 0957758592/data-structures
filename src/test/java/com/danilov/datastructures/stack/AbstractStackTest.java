@@ -85,4 +85,9 @@ public abstract class AbstractStackTest {
         emptyStack.pop();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testPushException() {
+        emptyStack.push(null);
+    }
+
 }

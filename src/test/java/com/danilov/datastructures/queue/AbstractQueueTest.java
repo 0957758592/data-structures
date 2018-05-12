@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public abstract class AbstractQueueTest {
     public abstract Queue getQueue();
@@ -27,6 +28,11 @@ public abstract class AbstractQueueTest {
     @Test(expected = NoSuchElementException.class)
     public void testQueueAndDequeueException() {
         assertEquals("D", emptyQueue.dequeue());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testEnqueueException() {
+        emptyQueue.enqueue(null);
     }
 
 }

@@ -7,7 +7,7 @@ public abstract class AbstractQueue implements Queue {
 
     public void validateValue(Object value) {
         if (value == null) {
-            throw new NoSuchElementException("the value can't be null");
+            throw new IllegalArgumentException("the value can't be null");
         }
     }
 

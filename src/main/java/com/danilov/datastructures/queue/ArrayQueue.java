@@ -27,7 +27,6 @@ public class ArrayQueue extends AbstractQueue {
     }
 
     public Object dequeue() {
-        validateValue(array[0]);
         Object removed = array[0];
         if (size > 0) {
             System.arraycopy(array, 1, array, 0, size - 1);

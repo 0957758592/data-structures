@@ -31,7 +31,6 @@ public class LinkedStack extends AbstractStack {
         if (size == 0 || tail == null) {
             throw new NoSuchElementException("poop(): in LinkedStack");
         } else {
-            validateValue(tail.value);
             Object object = tail.value;
             tail = tail.prev;
             size--;

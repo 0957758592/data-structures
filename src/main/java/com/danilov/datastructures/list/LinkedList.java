@@ -9,6 +9,7 @@ public class LinkedList extends AbstractList {
 
     public void add(Object value, int index) {
         validateAddIndex(index);
+        validateValue(value);
         Node newNode = new Node(value);
 
         if (size == 0) {
@@ -79,7 +80,6 @@ public class LinkedList extends AbstractList {
     }
 
     public int indexOf(Object value) {
-        validateValue(value);
         Node currHead = head;
 
         for (int i = 0; i < size; i++) {
@@ -92,7 +92,6 @@ public class LinkedList extends AbstractList {
     }
 
     public int lastIndexOf(Object value) {
-        validateValue(value);
         Node currTail = tail;
 
         for (int i = size - 1; i >= 0; i--) {
