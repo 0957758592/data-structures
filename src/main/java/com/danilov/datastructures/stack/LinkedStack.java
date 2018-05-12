@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class LinkedStack extends AbstractStack {
 
-    Node tail;
+    private Node tail;
 
     public void push(Object value) {
         validateValue(value);
@@ -39,17 +39,13 @@ public class LinkedStack extends AbstractStack {
         }
     }
 
-    private class Node {
+    private static class Node {
 
-        Node prev;
-        Object value;
+        private Node prev;
+        private Object value;
 
-        Node(Object value) {
+        private Node(Object value) {
             this.value = value;
-        }
-
-        Object getValue() {
-            return value;
         }
     }
 

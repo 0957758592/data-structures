@@ -5,7 +5,7 @@ public abstract class AbstractStack implements Stack {
 
     public void validateValue(Object value) {
         if (value == null) {
-            throw new NullPointerException("the value is " + value + ". Check the data!");
+            throw new IllegalArgumentException("the value can't be null");
         }
     }
 

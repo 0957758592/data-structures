@@ -1,9 +1,11 @@
 package com.danilov.datastructures.list;
 
+import java.util.StringJoiner;
+
 public class LinkedList extends AbstractList {
 
-    Node head;
-    Node tail;
+    private Node head;
+    private Node tail;
 
     public void add(Object value, int index) {
         validateAddIndex(index);
@@ -32,62 +34,38 @@ public class LinkedList extends AbstractList {
 
     public Object remove(int index) {
         validateIndex(index);
-        Node currNode;
-        Object removed;
+        Node currNode = getNode(index);
+        Object removed = currNode.value;
 
-        if (index == 0) {
-            currNode = head;
+        if (size == 1) {
+            removed = head.value;
+            head = tail = null;
+        } else if (index == 0) {
             removed = head.value;
             head = head.next;
+            head.prev = null;
         } else if (index == size - 1) {
-            currNode = tail;
             removed = tail.value;
             tail = tail.prev;
+            tail.next = null;
         } else {
-            currNode = getNode(index);
-            removed = currNode.value;
             currNode.prev.next = currNode.next;
             currNode.next.prev = currNode.prev;
         }
-
         size--;
         return removed;
     }
 
     public Object get(int index) {
         validateIndex(index);
-
-        Node currNode;
-
-        if (index == 0) {
-            validateValue(head.value);
-            return head.value;
-        } else if (index == size - 1) {
-            validateValue(tail.value);
-            return tail.value;
-        } else {
-            validateValue(getNode(index));
-            currNode = getNode(index);
-            return currNode.value;
-        }
+        return getNode(index).value;
     }
 
     public Object set(Object value, int index) {
         validateIndex(index);
         validateValue(value);
-        Object oldValue;
-
-        if (index == 0) {
-            oldValue = head.value;
-            head.value = value;
-        } else if (index == size - 1){
-            oldValue = tail.value;
-            tail.value = value;
-        } else {
-            Node currNode = getNode(index);
-            oldValue = currNode.value;
-            currNode.value = value;
-        }
+        Object oldValue = getNode(index).value;
+        getNode(index).value = value;
         return oldValue;
     }
 
@@ -96,7 +74,7 @@ public class LinkedList extends AbstractList {
             head = head.next;
             head.prev = null;
         }
-        tail = null;
+        tail = head = null;
         size = 0;
     }
 
@@ -104,7 +82,7 @@ public class LinkedList extends AbstractList {
         validateValue(value);
         Node currHead = head;
 
-        for (int i = 0; i <= size - 1; i++) {
+        for (int i = 0; i < size; i++) {
             if (value.equals(currHead.value)) {
                 return i;
             }
@@ -147,29 +125,20 @@ public class LinkedList extends AbstractList {
 
     public String toString() {
         Node curr = head;
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-
+        StringJoiner sj = new StringJoiner(",", "[", "]");
         for (int i = 0; i <= size - 1; i++) {
-            if (i == size - 1) {
-                sb.append(curr.value);
-            } else {
-                sb.append(curr.value + ", ");
-                curr = curr.next;
-            }
+            sj.add((CharSequence) curr.value);
         }
-        sb.append("]");
-
-        return sb.toString();
+        return sj.toString();
     }
 
-    private class Node {
+    private static class Node {
 
-         Node next;
-         Node prev;
-         Object value;
+        private Node next;
+        private Node prev;
+        private Object value;
 
-         Node(Object value) {
+        private Node(Object value) {
             this.value = value;
         }
     }

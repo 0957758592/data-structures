@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class LinkedQueue extends AbstractQueue {
 
-    Node head;
+    private Node head;
 
     public void enqueue(Object value){
         validateValue(value);
@@ -32,12 +32,11 @@ public class LinkedQueue extends AbstractQueue {
         return result;
     }
 
-    private class Node {
+    private static class Node {
 
-         Node next;
-         Object value;
-
-         Node(Object value) {
+        private Node next;
+        private Object value;
+        private Node(Object value) {
             this.value = value;
         }
     }
