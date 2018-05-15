@@ -1,6 +1,6 @@
 package com.danilov.datastructures.list;
 
-public abstract class AbstractList implements List {
+public abstract class AbstractList implements List, Iterable {
     int size;
 
     public void add(Object value) {

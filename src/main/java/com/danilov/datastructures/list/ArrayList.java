@@ -1,5 +1,6 @@
 package com.danilov.datastructures.list;
 
+import java.util.Iterator;
 import java.util.StringJoiner;
 
 public class ArrayList extends AbstractList {
@@ -27,7 +28,7 @@ public class ArrayList extends AbstractList {
     public Object remove(int index) {
         validateIndex(index);
         Object removed = array[index];
-        System.arraycopy(array, index + 1, array, index, (size-1) - index);
+        System.arraycopy(array, index + 1, array, index, (size - 1) - index);
         array[size - 1] = null;
         size--;
         return removed;
@@ -46,24 +47,28 @@ public class ArrayList extends AbstractList {
     }
 
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            array[i] = null;
+        for (Object o : array) {
+            o = null;
         }
         size = 0;
     }
 
     public int indexOf(Object value) {
+        int i = new MyIterator().getI();
         if (value == null) {
-            for (int i = 0; i < size; i++) {
-                if (array[i].equals(null)) {
+
+            for (Object o : array) {
+                if (o.equals(null)) {
                     return i;
                 }
             }
         } else {
-            for (int i = 0; i < size; i++) {
-                if (value.equals(array[i])) {
+
+            for (Object o : array) {
+                if (value.equals(o)) {
                     return i;
                 }
+                i++;
             }
         }
         return -1;
@@ -76,6 +81,7 @@ public class ArrayList extends AbstractList {
                     return i;
                 }
             }
+
         } else {
             for (int i = size - 1; i >= 0; i--) {
                 if (value.equals(array[i])) {
@@ -96,9 +102,45 @@ public class ArrayList extends AbstractList {
 
     public String toString() {
         StringJoiner sj = new StringJoiner(",", "[", "]");
-        for (int i = 0; i < size; i++) {
-            sj.add((CharSequence) array[i]);
+        for (Object o : array) {
+            sj.add((CharSequence) o);
         }
         return sj.toString();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator {
+        private int i = 0;
+
+        private MyIterator() {
+        }
+
+        @Override
+        public boolean hasNext() {
+            return i < size;
+        }
+
+        @Override
+        public Object next() {
+            i++;
+            return array[i];
+        }
+
+        private boolean prevNext() {
+            return i > size;
+        }
+        private Object prev(Object arr) {
+            if(prevNext()) i--;
+            return array[i];
+        }
+
+        private int getI() {
+            return i;
+        }
+
     }
 }

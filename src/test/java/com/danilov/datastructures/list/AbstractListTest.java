@@ -9,8 +9,8 @@ import static org.junit.Assert.assertEquals;
 public abstract class AbstractListTest {
 
     public abstract List getList();
-    List emptyList = getList();
-    List listWithFiveElements = getList();
+    public List emptyList = getList();
+    public List listWithFiveElements = getList();
 
 
     @Before

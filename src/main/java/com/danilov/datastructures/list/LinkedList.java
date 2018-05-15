@@ -1,5 +1,6 @@
 package com.danilov.datastructures.list;
 
+import java.util.Iterator;
 import java.util.StringJoiner;
 
 public class LinkedList extends AbstractList {
@@ -88,6 +89,7 @@ public class LinkedList extends AbstractList {
             }
             currHead = currHead.next;
         }
+
         return -1;
     }
 
@@ -112,6 +114,7 @@ public class LinkedList extends AbstractList {
             for (int i = 0; i < index; i++) {
                 currNode = currNode.next;
             }
+
         } else {
             currNode = tail;
 
@@ -123,12 +126,17 @@ public class LinkedList extends AbstractList {
     }
 
     public String toString() {
-        Node curr = head;
         StringJoiner sj = new StringJoiner(",", "[", "]");
-        for (int i = 0; i <= size - 1; i++) {
+        Node curr = head;
+        for (int i = 0; i < size ; i++) {
             sj.add((CharSequence) curr.value);
         }
         return sj.toString();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return null;
     }
 
     private static class Node {
