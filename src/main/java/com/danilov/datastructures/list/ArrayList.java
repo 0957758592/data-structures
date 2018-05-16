@@ -54,7 +54,7 @@ public class ArrayList extends AbstractList {
     }
 
     public int indexOf(Object value) {
-        int i = new MyIterator().getI();
+        int i = 0;
         if (value == null) {
 
             for (Object o : array) {
@@ -116,9 +116,6 @@ public class ArrayList extends AbstractList {
     private class MyIterator implements Iterator {
         private int i = 0;
 
-        private MyIterator() {
-        }
-
         @Override
         public boolean hasNext() {
             return i < size;
@@ -129,18 +126,5 @@ public class ArrayList extends AbstractList {
             i++;
             return array[i];
         }
-
-        private boolean prevNext() {
-            return i > size;
-        }
-        private Object prev(Object arr) {
-            if(prevNext()) i--;
-            return array[i];
-        }
-
-        private int getI() {
-            return i;
-        }
-
     }
 }

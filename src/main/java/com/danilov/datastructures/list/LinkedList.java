@@ -134,11 +134,6 @@ public class LinkedList extends AbstractList {
         return sj.toString();
     }
 
-    @Override
-    public Iterator iterator() {
-        return null;
-    }
-
     private static class Node {
 
         private Node next;
@@ -150,4 +145,24 @@ public class LinkedList extends AbstractList {
         }
     }
 
+    @Override
+    public Iterator iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator {
+       private Node currentHead = head;
+
+        @Override
+        public boolean hasNext() {
+            return currentHead != null;
+        }
+
+        @Override
+        public Object next() {
+            Object value = currentHead.value;
+            currentHead = currentHead.next;
+            return value;
+        }
+    }
 }

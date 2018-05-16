@@ -12,7 +12,6 @@ public abstract class AbstractListTest {
     public List emptyList = getList();
     public List listWithFiveElements = getList();
 
-
     @Before
     public void before() {
         int newSize = 5;
