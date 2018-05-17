@@ -123,8 +123,9 @@ public class ArrayList extends AbstractList {
 
         @Override
         public Object next() {
+            int val = i;
             i++;
-            return array[i];
+            return array[val];
         }
     }
 }
